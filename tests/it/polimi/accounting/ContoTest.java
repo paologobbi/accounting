@@ -21,6 +21,7 @@ public class ContoTest {
 		contoA.trasferisciDa(contoDa, new BigDecimal("200"));
 		assertEquals(new BigDecimal("800"), contoDa.getSaldo());
 		assertEquals(new BigDecimal("2200"), contoA.getSaldo());
+		// toDo add Transazione
 
 	}
 }
