@@ -19,16 +19,25 @@
 			out.print(nome);} %>" /></label>
 		
 		<p></p>
-		<label>Cognome <input type="text" name="cognome" value="<% out.print(request.getParameter("cognome")); %>" /></label>
+		<label>Cognome <input type="text" name="cognome" value="<% 
+			String cognome = request.getParameter("cognome");
+		    if (cognome!=null){
+			out.print(cognome);}%>" /></label>
 		<p></p>
 		<!--  <label><input type="radio" name="gender" value="maschio" /> Maschio
 	    <input type="radio" name="gender" value="femmina" /> Femmina</label>-->
 	    <p></p>
-		<label>Nome utente <input type="text" name="username" value="<% out.print(request.getParameter("username")); %>" /></label>
-		<p></p>
+		<label>Nome utente <input type="text" name="username" value="<%
+			String username = request.getParameter("username");
+			if (username!=null) {
+			out.print(username);}%>" /></label>
+			<p></p>
 		<label>Password <input type="password" name="password" /></label>
 		<p></p>
-		<label>E-mail <input type="text" name="email" value="<% out.print(request.getParameter("email")); %>" /></label>
+		<label>E-mail <input type="text" name="email" value="<% 
+			String email= request.getParameter("email");
+			if (email!=null) {
+				out.print(email);}%>" /></label>
 	    <p></p>
 		<input type="submit" value="Registrazione" />
 	</form>

@@ -9,8 +9,16 @@
 <title>Login</title>
 </head>
 <body>
+<% 
+  if (request.getAttribute("messaggio")!=null){
+	  out.print (request.getAttribute("messaggio"));
+	  }%>
+  
 <form action="login" method="post"> 
-<label>Nome utente <input type="text" name="username" value="<% out.print(request.getParameter("username")); %>" /></label>
+<label>Nome utente <input type="text" name="username" value="<%
+	String username = request.getParameter("username");
+	if (username!=null) {
+	out.print(username);}%>" /></label>
 <label>Password <input type="password" name="password" /></label>
 <input type="submit" value="Login" />
 

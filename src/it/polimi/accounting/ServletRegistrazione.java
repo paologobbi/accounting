@@ -33,11 +33,11 @@ public class ServletRegistrazione extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
-		System.out.println("ciao ciao");
+		
 		try {
 			Connection conn =
 			       DriverManager.getConnection("jdbc:mysql://localhost/accounting?user=root&password=");
-			System.out.println("ciao ciao");
+			
 			PreparedStatement	stmt = conn.prepareStatement("INSERT INTO utente (nome,cognome,username,password,email) VALUES (? ,?,?, ?, ?);");	
 			stmt.setString(1, nome);
 			stmt.setString(2, cognome);
