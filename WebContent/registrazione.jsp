@@ -39,6 +39,8 @@
 				out.print(email);}%>" /></label>
 	    <p></p>
 		<input type="submit" value="Registrazione" />
+		<input type="reset" value="Reset" />
+		<input type="button" value="Back" onClick="history.go(-1);return true;">
 	</form>
 
 	

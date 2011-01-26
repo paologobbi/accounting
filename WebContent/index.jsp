@@ -15,13 +15,16 @@
 	  }%>
   
 <form action="login" method="post"> 
+Login
 <label>Nome utente <input type="text" name="username" value="<%
 	String username = request.getParameter("username");
 	if (username!=null) {
 	out.print(username);}%>" /></label>
 <label>Password <input type="password" name="password" /></label>
 <input type="submit" value="Login" />
+<p></p>
 
+Se non sei un utente registrato clicca <a href="registrazione.jsp">QUI</a>
 
 </form>
 

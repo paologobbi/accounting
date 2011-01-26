@@ -8,7 +8,7 @@
 </head>
 <body>
 <form action="TransazioniTipoConto" method="post">
-<label> Tipo del conto su cui effettuare la ricerca</label> <br>
+<label> Ciao <% out.print(session.getAttribute("username")); %>, su quale conto vuoi effettuare la ricerca</label> <br>
 <p></p>
 	<select name="TipoContoTransazioni">
 		<option> - Conto - </option>
@@ -21,6 +21,8 @@
 	</select>
 <p></p>
 		<input type="submit" value="Continua" />
+		<input type="reset" value="Reset" />
+		<input type="button" value="Back" onClick="history.go(-1);return true;">
 	
 
 </body>

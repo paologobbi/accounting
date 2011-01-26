@@ -8,6 +8,8 @@
 </head>
 <body>
 <form action="TransazioniDate" method="post">
+<label> Ciao <% out.print(session.getAttribute("username")); %></label> <br>
+<p></p>
 <label> Data inizio transazioni</label> <br>
 
 	<select name="GiornoInizioTransazioni">
@@ -152,6 +154,9 @@
 	
  <p></p>
 		<input type="submit" value="Continua" />
+		<input type="reset" value="Reset" />
+		<input type="button" value="Back" onClick="history.go(-1);return true;">
+
 	
 		
 		
