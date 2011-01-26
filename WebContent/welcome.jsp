@@ -7,7 +7,22 @@
 <title>welcome</title>
 </head>
 <body>
-<p> WELCOME <% out.print(session.getAttribute("username")); %></p>
-
+<p> Ciao <% out.print(session.getAttribute("username")); %> il tuo login è stato effettuato</p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<a href="conti.jsp">Guarda i tuoi conti</a><br>
+<p></p>
+<a href="saldo.jsp">Guarda il tuo saldo</a><br>
+<p></p>
+<a href="transazioniPerIntervallo.jsp">Transazioni per date</a><br>
+<p></p>
+<a href="transazioniPerTipoConto.jsp">Transazioni per tipo conto</a><br>
+<p></p>
+<a href="creaConto.jsp">Crea un altro conto</a><br>
+<p></p>
 </body>
+
 </html>

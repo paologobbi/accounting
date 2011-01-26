@@ -15,7 +15,7 @@ public class ContoTest {
 		
 	}
 	@Test
-	public void effettuaTransazioneConUnAltroContoDiAttivo() {
+	public void effettuaTransazioneDaUnAltroContoDiAttivo() {
 		Conto contoDa = new Conto (null, null, new BigDecimal("1000"));
 		Conto contoA = new Conto(null,null, new BigDecimal("2000"));
 		contoA.trasferisciDa(contoDa, new BigDecimal("200"));
@@ -24,5 +24,14 @@ public class ContoTest {
 		
 
 	}
+	
+	@Test
+	public void effettuaTransazioneSuUnAltroContoDiAttivo() {
+		Conto contoDa = new Conto (null, null, new BigDecimal("1000"));
+		Conto contoA = new Conto(null,null, new BigDecimal("2000"));
+		contoA.trasferisciA(contoA, new BigDecimal("200"));
+		assertEquals(new BigDecimal("1000"), contoDa.getSaldo());
+		assertEquals(new BigDecimal("2000"), contoA.getSaldo());
 }
+}	
 	

@@ -24,8 +24,7 @@
 		    if (cognome!=null){
 			out.print(cognome);}%>" /></label>
 		<p></p>
-		<!--  <label><input type="radio" name="gender" value="maschio" /> Maschio
-	    <input type="radio" name="gender" value="femmina" /> Femmina</label>-->
+		
 	    <p></p>
 		<label>Nome utente <input type="text" name="username" value="<%
 			String username = request.getParameter("username");

@@ -33,4 +33,10 @@ public class Conto {
 	
 		
 	}
+
+	public void trasferisciA(Conto contoA, BigDecimal importo) {
+		this.saldo = this.saldo.subtract(importo);
+		contoA.saldo = contoA.saldo.add(importo);
+
+	}
 }
