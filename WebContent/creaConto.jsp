@@ -8,11 +8,12 @@
 </head>
 <body>
 <legend>Tipo conto da creare</legend><br>
-<form action="creaConto" method="post">
-	<input type="checkbox" name="attivo"> Attivo <br>
-	<input type="checkbox" name="passivo"> Passivo <br>
-	<input type="checkbox" name="entrate"> Entrate <br>
-	<input type="checkbox" name="uscite"> Uscite <br>	
+<form action="CreaConto" method="post">
+
+	<input type="radio" name="tipoConto"  value="Attivo" /> Attivo <br>
+	<input type="radio" name="tipoConto" value="Passivo" /> Passivo<br>
+	<input type="radio" name="tipoConto" value="Entrate" /> Entrate<br>
+	<input type="radio" name="tipoConto" value="Uscite" /> Uscite<br>	
 	
 	<p></p>
 		<label>Nome da dare al conto creato <input type="text" name="nomeconto" value="<%
@@ -20,7 +21,10 @@
 			 </label>
 			<p></p>
 
-
+<p></p>
+		<input type="submit" value="Continua" />
+		<input type="reset" value="Reset" />
+		<input type="button" value="Back" onClick="history.go(-1);return true;">
 </form>
 
 

@@ -49,4 +49,24 @@
     <servlet-name>ServletRegistrazione</servlet-name>
     <url-pattern>/registrazione</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TransazioniDate</display-name>
+    <servlet-name>TransazioniDate</servlet-name>
+    <servlet-class>it.polimi.accounting.TransazioniDate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TransazioniDate</servlet-name>
+    <url-pattern>/TransazioniDate</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreaConto</display-name>
+    <servlet-name>CreaConto</servlet-name>
+    <servlet-class>it.polimi.accounting.CreaConto</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreaConto</servlet-name>
+    <url-pattern>/CreaConto</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -13,7 +13,7 @@
 <p></p>
 <p></p>
 <p></p>
-<a href="conti.jsp">Guarda i tuoi conti</a><br>
+<a href="conti">Guarda i tuoi conti</a><br>
 <p></p>
 <a href="saldo.jsp">Guarda il tuo saldo</a><br>
 <p></p>

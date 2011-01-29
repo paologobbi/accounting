@@ -9,7 +9,8 @@
 <title>registrazione</title>
 </head>
 <body>
-   Form per la registrazione nuovo utente:
+<legend>Form per la registrazione nuovo utente</legend><br>
+   
    <p></p>
 
 	<form action="registrazione" method="post">

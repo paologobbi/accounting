@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,25 +28,25 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		
+		ResultSet risultato;
 		try {
 			Connection conn =
 			       DriverManager.getConnection("jdbc:mysql://localhost/accounting?user=root&password=");
 			PreparedStatement	stmt = conn.prepareStatement("SELECT * FROM utente WHERE username=?");	
 			stmt.setString(1, username);
-			ResultSet risultato=stmt.executeQuery();
+			
+			risultato=stmt.executeQuery();
+		} catch (SQLException e){
+			response.getWriter().print("C'è un errore sulla connessione, riprovare più tardi!");
+		return;
+		}
+		
+			try {
 			risultato.next();
 			
-		String expectedUsername = risultato.getString("username");
+		//String expectedUsername = risultato.getString("username");
 		String expectedPassword = risultato.getString("password");
-		/**if (risultato==null){
-			
-			request.setAttribute("messaggio", "Username non trovato. Impossibile efettuare i l login!");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-		    dispatcher.forward(request,response);
-			
-		}
-			*/
+		
 		if (expectedPassword.equals(password)){
 				request.getSession().setAttribute("username", username);
 				response.sendRedirect("welcome.jsp");
@@ -60,7 +61,7 @@ public class LoginServlet extends HttpServlet {
 
 				     dispatcher.forward(request, response);
 					
-		 } 
+				} 
 		 
 		} catch (SQLException e) {
 			request.setAttribute("messaggio", "Username o password non corretta, impossibile effettuare il login! ");
@@ -71,6 +72,6 @@ public class LoginServlet extends HttpServlet {
 			
 		}
 		
-	}
+	} 
 
 }
