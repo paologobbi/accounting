@@ -32,12 +32,15 @@ public class ElencoConti extends HttpServlet {
 		
 		try {
 			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/accounting?user=root&password=");
+	
+			
 			PreparedStatement	stmt = conn.prepareStatement("SELECT * FROM conto WHERE username=?");	
 			stmt.setString(1, username);
 			ResultSet risultato=stmt.executeQuery();
-			
+			List<Conto> conti = new ArrayList<Conto>();
+
 		
-		List<Conto> conti = new ArrayList<Conto>();
+	
 		while (risultato.next()){
 			String saldo = risultato.getString("saldo");
 			Conto conto = new Conto(risultato.getInt("id"),risultato.getString("nome"),new BigDecimal(saldo));

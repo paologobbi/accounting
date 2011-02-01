@@ -16,9 +16,14 @@
 	<input type="radio" name="tipoConto" value="Uscite" /> Uscite<br>	
 	
 	<p></p>
-		<label>Nome da dare al conto creato <input type="text" name="nomeconto" value="<%
-			String username = request.getParameter("nomeconto");%>"/>
-			 </label>
+		<label>Nome da dare al conto creato <input type="text" name="nomeConto" value="<%
+			String nomeConto = request.getParameter("nomeConto");%>"/>
+		 </label>
+	<p></p>
+	<p></p>
+		<label>Saldo Iniziale Conto <input type="text" name="saldoIniziale" value="<%
+			String saldoIniziale = request.getParameter("saldoIniziale");%>"/>
+		 </label>
 			<p></p>
 
 <p></p>

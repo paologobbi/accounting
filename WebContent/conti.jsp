@@ -7,13 +7,22 @@
 <title>Insert title here</title>
 </head>
 <body>
+<table border=2, cell> 
+	<tr bgcolor=#00c196>
+       <td width=100>Nome</td>
+       <td width=100>Saldo</td>
+       
+   </tr>
 <%
 List<Conto> conti = (List<Conto>) request.getAttribute("conti");
 for (Conto conto : conti) {
 	%>
-	<p>
-		<% out.write("Conto: " + conto.getNome() + "  saldo= " + conto.getSaldo()+"</p>"); %>
-	</p>
+	<tr>
+       <td align="center"><% out.print(conto.getNome());%></td>
+       <td align="center"><% out.print(conto.getSaldo());%></td>
+       
+   </tr>
+	
 	<%
 }
 %>
