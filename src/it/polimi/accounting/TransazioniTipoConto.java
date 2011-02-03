@@ -19,11 +19,11 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class TransazioniDate
  */
-public class TransazioniDate extends HttpServlet {
+public class TransazioniTipoConto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
    
-    public TransazioniDate() {
+    public TransazioniTipoConto() {
         super();
        
     }
@@ -31,15 +31,14 @@ public class TransazioniDate extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getSession().getAttribute("username");
-
-		String dataInizio = (String) request.getParameter("AnnoInizioTransazioni")+"-"+request.getParameter("MeseInizioTransazioni")+"-"+request.getParameter("GiornoInizioTransazioni");
-		String dataFine = (String) request.getParameter("AnnoFineTransazioni")+"-"+request.getParameter("MeseFineTransazioni")+"-"+request.getParameter("GiornoFineTransazioni");
+		String tipo=(String) request.getParameter("TipoContoTransazioni");
+		
 
 		try {
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/accounting?user=root&password=");
-			PreparedStatement	stmt = conn.prepareStatement("SELECT * FROM transazione WHERE data>=? AND data<=?");	
-			stmt.setString(1, dataInizio);
-			stmt.setString(2, dataFine);
+			PreparedStatement	stmt = conn.prepareStatement("SELECT * FROM transazione WHERE tipo=?");	
+			stmt.setString(1, tipo);
+			
 
 			
 			ResultSet risultato=stmt.executeQuery();

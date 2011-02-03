@@ -22,14 +22,13 @@ public class CreaConto extends HttpServlet {
 	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//request.getSession().getAttribute("username");
-
+		
 		String tipo = request.getParameter("tipoConto");
 		String nomeConto = request.getParameter("nomeConto");
 		String saldoIniziale = request.getParameter("saldoIniziale");
 	    String username= (String) request.getSession().getAttribute("username");
 
-	
+	    
 		try {
 			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/accounting?user=root&password=");
 			
@@ -37,8 +36,9 @@ public class CreaConto extends HttpServlet {
 			stmt.setString(1,nomeConto);
 			stmt.setString(2,saldoIniziale);
 			stmt.setString(3,username);	
-			stmt.setString(2,tipo);
+			stmt.setString(4,tipo);
 			stmt.executeUpdate();
+			response.sendRedirect("welcome.jsp");
 	return;
 	
 	

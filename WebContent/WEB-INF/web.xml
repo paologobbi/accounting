@@ -69,4 +69,24 @@
     <servlet-name>CreaConto</servlet-name>
     <url-pattern>/CreaConto</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TransazioniTipoConto</display-name>
+    <servlet-name>TransazioniTipoConto</servlet-name>
+    <servlet-class>it.polimi.accounting.TransazioniTipoConto</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TransazioniTipoConto</servlet-name>
+    <url-pattern>/TransazioniTipoConto</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SaldoUtente</display-name>
+    <servlet-name>SaldoUtente</servlet-name>
+    <servlet-class>it.polimi.accounting.SaldoUtente</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SaldoUtente</servlet-name>
+    <url-pattern>/SaldoUtente</url-pattern>
+  </servlet-mapping>
 </web-app>

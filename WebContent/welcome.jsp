@@ -15,7 +15,7 @@
 <p></p>
 <a href="conti">Guarda i tuoi conti</a><br>
 <p></p>
-<a href="saldo.jsp">Guarda il tuo saldo</a><br>
+<a href="SaldoUtente.java">Guarda il tuo saldo</a><br>
 <p></p>
 <a href="transazioniPerIntervallo.jsp">Transazioni per date</a><br>
 <p></p>
