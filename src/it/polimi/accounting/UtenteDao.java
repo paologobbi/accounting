@@ -37,7 +37,10 @@ public BigDecimal saldo()  throws SQLException{
 	BigDecimal saldoTotale=null;
 	while (risultato.next()){
 	saldoTotale=saldoTotale.add(risultato.getBigDecimal("saldo"));
-	}
+	saldoTotale.toString();
+	
+	
+	 }
 
 return saldoTotale;
 }

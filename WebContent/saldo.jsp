@@ -8,6 +8,9 @@
 </head>
 <body>
 
+<p> Ciao <% out.print(session.getAttribute("username")); %> il tuo saldo totale è </p>
+
+
 
 </body>
 </html>
