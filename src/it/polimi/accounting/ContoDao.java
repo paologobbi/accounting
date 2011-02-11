@@ -7,13 +7,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 
 public class ContoDao {
 	private Connection conn;
+	private String username;
 
-	public ContoDao(Connection conn){
+	public ContoDao(Connection conn, String username){
 		this.conn = conn;
+		this.username=username;
 	}
 	
 	
@@ -37,7 +39,7 @@ public class ContoDao {
 		
 	}
 	
-	public List<Conto> trovaConti(String username) throws SQLException{
+	public List<Conto> trovaConti() throws SQLException{
 		PreparedStatement	stmt = conn.prepareStatement("SELECT * FROM conto WHERE username=?");	
 		stmt.setString(1, username);
 		ResultSet risultato=stmt.executeQuery();
@@ -50,9 +52,19 @@ public class ContoDao {
 		return conti;
 			
 		}
-
-
-		//return null;
+	
+	
+	public void creaConto(String nomeConto, String saldoIniziale,String tipo) throws SQLException{
+		PreparedStatement	stmt = conn.prepareStatement("INSERT INTO conto(nome,saldo,username,tipo) VALUES (? ,?,?,?);");	
+		stmt.setString(1,nomeConto);
+		stmt.setString(2,saldoIniziale);
+		stmt.setString(3,username);	
+		stmt.setString(4,tipo);
+		stmt.executeUpdate();
+return;
+	}
+		
+		
 	
 }
 

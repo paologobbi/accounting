@@ -6,7 +6,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -44,7 +43,6 @@ public class LoginServlet extends HttpServlet {
 			try {
 			risultato.next();
 			
-		//String expectedUsername = risultato.getString("username");
 		String expectedPassword = risultato.getString("password");
 		
 		if (expectedPassword.equals(password)){

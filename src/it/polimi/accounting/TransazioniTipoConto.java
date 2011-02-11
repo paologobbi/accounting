@@ -30,15 +30,15 @@ public class TransazioniTipoConto extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession().getAttribute("username");
+		String username=(String) request.getSession().getAttribute("username");
 		String tipo=(String) request.getParameter("TipoContoTransazioni");
 		
 
 		try {
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/accounting?user=root&password=");
-			PreparedStatement	stmt = conn.prepareStatement("SELECT * FROM transazione WHERE tipo=?");	
+			PreparedStatement	stmt = conn.prepareStatement("SELECT * FROM transazione WHERE tipo=? AND username=?");	
 			stmt.setString(1, tipo);
-			
+			stmt.setString(2, username);
 
 			
 			ResultSet risultato=stmt.executeQuery();

@@ -30,30 +30,18 @@ public class TransazioniDate extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession().getAttribute("username");
+		String username=(String) request.getSession().getAttribute("username");
 
 		String dataInizio = (String) request.getParameter("AnnoInizioTransazioni")+"-"+request.getParameter("MeseInizioTransazioni")+"-"+request.getParameter("GiornoInizioTransazioni");
 		String dataFine = (String) request.getParameter("AnnoFineTransazioni")+"-"+request.getParameter("MeseFineTransazioni")+"-"+request.getParameter("GiornoFineTransazioni");
+		System.out.println(dataInizio);
+		System.out.println(dataFine); 
 
 		try {
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/accounting?user=root&password=");
-			PreparedStatement	stmt = conn.prepareStatement("SELECT * FROM transazione WHERE data>=? AND data<=?");	
-			stmt.setString(1, dataInizio);
-			stmt.setString(2, dataFine);
-
+			TransazioniDao insiemeTransazioni = new TransazioniDao(conn, username);
+			List<Transazione> transazioni =insiemeTransazioni.transazioniPerDate(dataInizio, dataFine);
 			
-			ResultSet risultato=stmt.executeQuery();
-			
-			
-			List<Transazione> transazioni = new ArrayList<Transazione>();
-			while (risultato.next()){
-				
-				String importo = risultato.getString("importo");
-				Transazione transazione = new Transazione(risultato.getInt("id"),risultato.getInt("conto_da"),risultato.getInt("conto_a"),new BigDecimal(importo),risultato.getString("causale"),risultato.getString("data"));
-				transazioni.add(transazione);
-				
-			
-		}
 			request.setAttribute("transazioni", transazioni);
 			
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/mostraTransazioni.jsp");

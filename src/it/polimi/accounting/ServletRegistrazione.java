@@ -38,21 +38,12 @@ public class ServletRegistrazione extends HttpServlet {
 			Connection conn =
 			       DriverManager.getConnection("jdbc:mysql://localhost/accounting?user=root&password=");
 			
-			PreparedStatement	stmt = conn.prepareStatement("INSERT INTO utente (nome,cognome,username,password,email) VALUES (? ,?,?, ?, ?);");	
-			stmt.setString(1, nome);
-			stmt.setString(2, cognome);
-			stmt.setString(3, username);
-			stmt.setString(4, password);
-			stmt.setString(5, email);
-			stmt.executeUpdate();
+			UtenteDao registrazione=new UtenteDao(conn,username);
+			registrazione.registrazione(nome, cognome, password, email);
 			
 			request.getSession().setAttribute("username", username);
 			response.sendRedirect("welcome.jsp");
-			return;
-			
-	
-			
-		 
+	 
 		} catch (SQLException e) {
 			
 			e.printStackTrace();

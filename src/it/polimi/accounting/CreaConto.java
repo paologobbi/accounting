@@ -32,14 +32,11 @@ public class CreaConto extends HttpServlet {
 		try {
 			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/accounting?user=root&password=");
 			
-			PreparedStatement	stmt = conn.prepareStatement("INSERT INTO conto(nome,saldo,username,tipo) VALUES (? ,?,?,?);");	
-			stmt.setString(1,nomeConto);
-			stmt.setString(2,saldoIniziale);
-			stmt.setString(3,username);	
-			stmt.setString(4,tipo);
-			stmt.executeUpdate();
+			ContoDao creaConto=new ContoDao(conn,username);
+			creaConto.creaConto(nomeConto, saldoIniziale, tipo);
+			
 			response.sendRedirect("welcome.jsp");
-	return;
+	
 	
 	
 	
