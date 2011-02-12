@@ -23,6 +23,9 @@
 <p></p>
 <a href="creaConto.jsp">Crea un altro conto</a><br>
 <p></p>
+<a href="transazione.jsp">Fai una transazione</a><br>
+<p></p>
+
 </body>
 
 </html>
