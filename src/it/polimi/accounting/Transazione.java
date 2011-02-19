@@ -24,17 +24,34 @@ public class Transazione {
 		}
 
 
-		public Integer getId() {
+		public Transazione(Integer contoDa, Integer contoA, BigDecimal importo) {
+        this.conto_da=contoDa;
+        this.conto_a=contoA;
+        this.importo=importo;
+		}
+
+
+		public void setCausale(String causale) {
+			this.causale = causale;
+		}
+
+
+		public void setData(String data) {
+			this.data = data;
+		}
+
+
+		public int getId() {
 			return id;
 		}
 
 
-		public Integer getConto_da() {
+		public int getContoDa() {
 			return conto_da;
 		}
 
 
-		public Integer getConto_a() {
+		public int getContoA() {
 			return conto_a;
 		}
 

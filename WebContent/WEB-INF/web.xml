@@ -89,4 +89,14 @@
     <servlet-name>SaldoUtente</servlet-name>
     <url-pattern>/SaldoUtente</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreaTransazione</display-name>
+    <servlet-name>CreaTransazione</servlet-name>
+    <servlet-class>it.polimi.accounting.CreaTransazione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreaTransazione</servlet-name>
+    <url-pattern>/CreaTransazione</url-pattern>
+  </servlet-mapping>
 </web-app>

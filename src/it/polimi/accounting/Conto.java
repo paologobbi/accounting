@@ -2,10 +2,11 @@ package it.polimi.accounting;
 
 import java.math.BigDecimal;
 
-public class Conto {
-	private Integer id;
-	private String nome;
-	private BigDecimal saldo;
+public abstract class Conto {
+	
+	protected Integer id;
+	protected String nome;
+	protected BigDecimal saldo;
 
 	public Conto(Integer id,String nome, BigDecimal saldo){
 		this.id =id;
@@ -27,16 +28,28 @@ public class Conto {
 		return saldo;
 	}
 
-	public void trasferisciDa(Conto contoDa, BigDecimal importo) {
-		contoDa.saldo = contoDa.saldo.subtract(importo);
-		this.saldo = this.saldo.add(importo);
-	
+	public Transazione trasferisciA(Conto contoA, BigDecimal importo) {
+		if(contoA instanceof ContoAttivo){
+			ContoAttivo attivo= (ContoAttivo) contoA;
+			return this.trasferisciA(attivo, importo);
+			
+		}
+		if(contoA instanceof ContoUscite){
+			ContoUscite uscite= (ContoUscite) contoA;
+			return this.trasferisciA(uscite, importo);
+		
+		}
+		throw new RuntimeException("Il conto di arrico  non appartiene a nessun tipo valido ");
+		
 		
 	}
+	
+	public abstract Transazione trasferisciA(ContoAttivo contoA, BigDecimal importo) ;
+		
 
-	public void trasferisciA(Conto contoA, BigDecimal importo) {
-		this.saldo = this.saldo.subtract(importo);
-		contoA.saldo = contoA.saldo.add(importo);
 
-	}
+
+	public abstract Transazione trasferisciA(ContoUscite contoA, BigDecimal importo);
+
+
 }

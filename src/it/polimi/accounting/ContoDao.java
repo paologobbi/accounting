@@ -30,13 +30,21 @@ public class ContoDao {
 		
 	}
 
-	public Conto trovaConto(int id) throws SQLException{
+	public ContoAttivo trovaConto(int id) throws SQLException{
 		PreparedStatement stmt = conn.prepareStatement("Select * FROM conto WHERE id=?");
 		stmt.setInt(1, id);
 	    ResultSet risultato=stmt.executeQuery();
 		return null ;
 
 		
+	}
+	
+	private Conto creaConto(int id, String nome, BigDecimal saldo,String tipo ){
+		if(tipo.equals("attivo")){
+			ContoAttivo conto= new ContoAttivo(id,nome,saldo);
+			return conto;
+		}
+		return null;
 	}
 	
 	public List<Conto> trovaConti() throws SQLException{
@@ -46,7 +54,7 @@ public class ContoDao {
 		List<Conto> conti = new ArrayList<Conto>();
 		while (risultato.next()){
 			String saldo = risultato.getString("saldo");
-			Conto conto = new Conto(risultato.getInt("id"),risultato.getString("nome"),new BigDecimal(saldo));
+			Conto conto=creaConto(risultato.getInt("id"),risultato.getString("nome"),new BigDecimal(saldo),risultato.getString("tipo"));
 			conti.add(conto);
 		}
 		return conti;
