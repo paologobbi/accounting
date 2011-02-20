@@ -10,17 +10,23 @@ public class Transazione {
 		private BigDecimal importo;
 		private String causale;
 		private String data;
-		
+		private String username;
 
-		public Transazione(int id, int conto_da, int conto_a, BigDecimal importo, String causale,String data){
+		public Transazione(int id, int conto_da, int conto_a, BigDecimal importo, String causale,String data, String username){
 			this.id =id;
 			this.conto_da=conto_da;
 			this.conto_a=conto_a;
 			this.importo=importo;
 			this.causale=causale;
 			this.data=data;
+			this.username=username;
 			
 			
+		}
+
+
+		public String getUsername() {
+			return username;
 		}
 
 

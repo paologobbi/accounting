@@ -42,9 +42,13 @@ public class CreaTransazione extends HttpServlet {
 			
 			int contoAId=Integer.parseInt(request.getParameter("conto_a"));
 			Conto contoA=insiemeDeiConti.trovaConto(contoAId);
+			
 			Transazione t=contoDa.trasferisciA(contoA, new BigDecimal(request.getParameter("importo")));
+			
 			t.setData((String) request.getParameter("AnnoTransazione")+"-"+request.getParameter("MeseTransazione")+"-"+request.getParameter("GiornoTransazione"));
-
+			t.setCausale("causale");
+			TransazioniDao nuovaTransazione = new TransazioniDao(conn,username);
+			nuovaTransazione.creaTransazione(contoAId, contoDaId, t.getImporto(),t.getCausale(),t.getData());
 			
 		}catch  (SQLException e) {
 			

@@ -48,7 +48,7 @@ public class TransazioniTipoConto extends HttpServlet {
 			while (risultato.next()){
 				
 				String importo = risultato.getString("importo");
-				Transazione transazione = new Transazione(risultato.getInt("id"),risultato.getInt("conto_da"),risultato.getInt("conto_a"),new BigDecimal(importo),risultato.getString("causale"),risultato.getString("data"));
+				Transazione transazione = new Transazione(risultato.getInt("id"),risultato.getInt("conto_da"),risultato.getInt("conto_a"),new BigDecimal(importo),risultato.getString("causale"),risultato.getString("data"),risultato.getString("username"));
 				transazioni.add(transazione);
 				
 			
