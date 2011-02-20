@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.*,it.polimi.accounting.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,12 +10,15 @@
 <label> Ciao <% out.print(session.getAttribute("username")); %></label> <br>
 <p></p>
 <select name="conto_da"><br>
-	<option> - Da conto - </option> 
-	<option value="1">1</option>
-	<option value="2">2</option>
-	<option value="3">3</option>
-	<option value=3>4</option>
-	<option value="4">5</option>
+<option> - Da conto - </option>
+	<% List<String> conti = new ArrayList<String>();
+   conti=  (ArrayList<String>) request.getAttribute("conti");
+
+	for (int i=1; i<=conti.size();i++){
+		out.print("<option value=\""+ i+"\">"+i+"</option>\n");
+	}%>
+	
+	
 </select>
 <select name="conto_a"><br>
 	<option> - A conto - </option> 
@@ -52,7 +55,7 @@
 		out.print("<option value=\""+ i+"\">"+i+"</option>\n");
 	}%>
 	
-	<% String GiornoInizioTransazioni = request.getParameter("GiornoTransazione"); %>
+	<% String GiornoTransazioni = request.getParameter("GiornoTransazione"); %>
 </select>
 
 

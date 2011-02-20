@@ -61,6 +61,19 @@ public class ContoDao {
 			
 		}
 	
+	public List<String> trovaContiNome() throws SQLException{
+		PreparedStatement	stmt = conn.prepareStatement("SELECT nome FROM conto WHERE username=?");	
+		stmt.setString(1, username);
+		ResultSet risultato=stmt.executeQuery();
+		List<String> conti = new ArrayList<String>();
+		while (risultato.next()){
+			String conto=risultato.getString("nome");
+			conti.add(conto);
+		}
+		return conti;
+			
+		}
+	
 	
 	public void creaConto(String nomeConto, String saldoIniziale,String tipo) throws SQLException{
 		PreparedStatement	stmt = conn.prepareStatement("INSERT INTO conto(nome,saldo,username,tipo) VALUES (? ,?,?,?);");	
