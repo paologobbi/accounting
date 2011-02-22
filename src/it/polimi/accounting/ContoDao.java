@@ -65,12 +65,12 @@ public class ContoDao {
 		PreparedStatement	stmt = conn.prepareStatement("SELECT nome FROM conto WHERE username=?");	
 		stmt.setString(1, username);
 		ResultSet risultato=stmt.executeQuery();
-		List<String> conti = new ArrayList<String>();
+		List<String> nomiConti = new ArrayList<String>();
 		while (risultato.next()){
 			String conto=risultato.getString("nome");
-			conti.add(conto);
+			nomiConti.add(conto);
 		}
-		return conti;
+		return nomiConti;
 			
 		}
 	

@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -30,11 +31,12 @@ public class CreaTransazione extends HttpServlet {
 			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/accounting?user=root&password=");
 	
 			ContoDao insiemeDeiConti =new ContoDao(conn, username);
-			List<String> conti = insiemeDeiConti.trovaContiNome();
+			List<String> conti = new ArrayList<String>();
+			conti = insiemeDeiConti.trovaContiNome();
 			
 			
 		
-		request.setAttribute("conti", conti);
+		request.setAttribute("nomiConti", conti);
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/transazione.jsp");
 		dispatcher.forward(request, response);

@@ -11,18 +11,25 @@
 <p></p>
 <select name="conto_da"><br>
 <option> - Da conto - </option>
-	<% List<String> conti = new ArrayList<String>();
-   conti=  (ArrayList<String>) request.getAttribute("conti");
-
-	for (int i=1; i<=conti.size();i++){
-		out.print("<option value=\""+ i+"\">"+i+"</option>\n");
-	}%>
+	
+<% 	    
+	List<String> conti = (List<String>) request.getAttribute("nomiConti");
+	 for (int i=1; i<=conti.size();i++){
+		 
+	  
+		out.print("<option value=\""+ i+"\">"+  conti.get(i) +"</option>\n");
+	
+	  
+	  }
+	  %>
+	  <% String conto_da = request.getParameter("conto_da"); %>
+	
 	
 	
 </select>
 <select name="conto_a"><br>
 	<option> - A conto - </option> 
-	<option value="1">1</option>
+	<option value="1">paolo</option>
 	<option value="2">2</option>
 	<option value="3">3</option>
 	<option value=3>4</option>
