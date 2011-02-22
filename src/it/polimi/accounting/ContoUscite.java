@@ -17,7 +17,10 @@ public class ContoUscite extends Conto {
 
 	@Override
 	public Transazione trasferisciA(ContoUscite contoA, BigDecimal importo) {
-		throw new RuntimeException("Operazione non supportata");
+		//throw new RuntimeException("Operazione non supportata");
+		contoA.saldo=contoA.saldo.add(importo);
+		this.saldo=this.saldo.subtract(importo);
+		return null;
 		
 	}
 

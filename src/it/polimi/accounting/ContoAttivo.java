@@ -21,7 +21,9 @@ public class ContoAttivo extends Conto {
 
 
 	public Transazione trasferisciA(ContoUscite contoA, BigDecimal importo) {
-    
-		return null;		
+		contoA.saldo=contoA.saldo.add(importo);
+		this.saldo=this.saldo.subtract(importo);
+		return null;
+				
 	}
 }
