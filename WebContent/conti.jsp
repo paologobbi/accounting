@@ -15,8 +15,10 @@
    </tr>
 <%
 List<Conto> conti = (List<Conto>) request.getAttribute("conti");
+
 for (Conto conto : conti) {
 	%>
+	
 	<tr>
        <td align="center"><% out.print(conto.getNome());%></td>
        <td align="center"><% out.print(conto.getSaldo());%></td>
@@ -26,5 +28,6 @@ for (Conto conto : conti) {
 	<%
 }
 %>
+</TABLE>
 </body>
 </html>

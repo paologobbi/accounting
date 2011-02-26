@@ -23,8 +23,8 @@ for (Transazione transazione : transazioni) {
 	
 	<tr>
        <td align="center"><% out.print(transazione.getId());%></td>
-       <td align="center"><% out.print(transazione.getContoDa());%></td>
-       <td align="center"><% out.print(transazione.getContoA());%></td>
+       <td align="center"><% out.print(transazione.getContoDaNome());%></td>
+       <td align="center"><% out.print(transazione.getContoANome());%></td>
        <td align="center"><% out.print(transazione.getImporto());%></td>
        <td align="center"><% out.print(transazione.getCausale());%></td>
        <td align="center"><% out.print(transazione.getData());%></td>

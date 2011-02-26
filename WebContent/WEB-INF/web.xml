@@ -99,4 +99,14 @@
     <servlet-name>CreaTransazione</servlet-name>
     <url-pattern>/CreaTransazione</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TutteTransazioni</display-name>
+    <servlet-name>TutteTransazioni</servlet-name>
+    <servlet-class>it.polimi.accounting.TutteTransazioni</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TutteTransazioni</servlet-name>
+    <url-pattern>/TutteTransazioni</url-pattern>
+  </servlet-mapping>
 </web-app>

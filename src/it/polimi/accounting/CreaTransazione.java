@@ -31,12 +31,12 @@ public class CreaTransazione extends HttpServlet {
 			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/accounting?user=root&password=");
 	
 			ContoDao insiemeDeiConti =new ContoDao(conn, username);
-			List<String> conti = new ArrayList<String>();
-			conti = insiemeDeiConti.trovaContiNome();
-			
+			List<Conto> conti = new ArrayList<Conto>();
+			conti = insiemeDeiConti.trovaConti();
+		
 			
 		
-		request.setAttribute("nomiConti", conti);
+		request.setAttribute("conti", conti);
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/transazione.jsp");
 		dispatcher.forward(request, response);
@@ -49,8 +49,11 @@ public class CreaTransazione extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	String username = (String) request.getSession().getAttribute("username");
-		try {
-			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/accounting?user=root&password=");
+	Connection conn;
+	try {
+		conn = DriverManager.getConnection("jdbc:mysql://localhost/accounting?user=root&password=");
+	
+	try {
 	
 			ContoDao insiemeDeiConti =new ContoDao(conn, username);
 			int contoDaId=Integer.parseInt(request.getParameter("conto_da"));
@@ -62,14 +65,29 @@ public class CreaTransazione extends HttpServlet {
 			Transazione t=contoDa.trasferisciA(contoA, new BigDecimal(request.getParameter("importo")));
 			
 			t.setData((String) request.getParameter("AnnoTransazione")+"-"+request.getParameter("MeseTransazione")+"-"+request.getParameter("GiornoTransazione"));
-			t.setCausale("causale");
-			TransazioniDao nuovaTransazione = new TransazioniDao(conn,username);
-			nuovaTransazione.creaTransazione(contoAId, contoDaId, t.getImporto(),t.getCausale(),t.getData());
-			
+			t.setCausale(request.getParameter("causale"));
+			TransazioniDao insiemeTransazioni = new TransazioniDao(conn,username);
+			conn.setAutoCommit(false);
+			insiemeTransazioni.creaTransazione(t);
+			insiemeDeiConti.save(contoDa);
+			insiemeDeiConti.save(contoA);
+			conn.commit();
+			response.sendRedirect("welcome.jsp");
 		}catch  (SQLException e) {
 			
 			e.printStackTrace();
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			
 		}
+	} catch (SQLException e2) {
+		e2.printStackTrace();
+	}	
+	
+	
 	}
 
 }

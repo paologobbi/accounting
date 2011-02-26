@@ -15,16 +15,17 @@
 <p></p>
 <a href="conti">Guarda i tuoi conti</a><br>
 <p></p>
-<a href="SaldoUtente.java">Guarda il tuo saldo</a><br>
+<a href="SaldoUtente">Guarda il tuo saldo</a><br>
 <p></p>
 <a href="transazioniPerIntervallo.jsp">Transazioni per date</a><br>
 <p></p>
-<a href="transazioniPerTipoConto.jsp">Transazioni per tipo conto</a><br>
+<a href="TutteTransazioni">Tutte le transazioni</a><br>
 <p></p>
 <a href="creaConto.jsp">Crea un altro conto</a><br>
 <p></p>
-<a href="transazione.jsp">Fai una transazione</a><br>
+<a href="CreaTransazione">Fai una transazione</a><br>
 <p></p>
+
 
 </body>
 

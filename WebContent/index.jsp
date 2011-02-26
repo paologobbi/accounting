@@ -9,15 +9,6 @@
 <title>Login</title>
 </head>
 <body>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
 
 <% 
   if (request.getAttribute("messaggio")!=null){

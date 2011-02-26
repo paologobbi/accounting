@@ -14,6 +14,10 @@ public class ContoUscite extends Conto {
 
 		
 	}
+	
+	public String toString(){
+		return "Uscite-"+this.getNome();
+	}
 
 	@Override
 	public Transazione trasferisciA(ContoUscite contoA, BigDecimal importo) {

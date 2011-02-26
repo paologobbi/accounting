@@ -9,7 +9,9 @@ public class ContoAttivo extends Conto {
 		
 	}
 
-	
+	public String toString(){
+		return "Attivo-"+this.getNome();
+	}
 
 	public Transazione trasferisciA(ContoAttivo contoA, BigDecimal importo) {
 		this.saldo = this.saldo.subtract(importo);

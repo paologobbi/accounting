@@ -22,14 +22,13 @@ public class TransazioniDao {
 		this.username=username;
 	}
 	
-	public void creaTransazione(int conto_a, int conto_da,BigDecimal importo,String causale, String data) throws SQLException{
-		PreparedStatement	stmt = conn.prepareStatement("INSERT INTO transazione(conto_a,conto_da,importo,causale,data,username) VALUES (?,?,?,?,?,?);");	
-		stmt.setInt(1,conto_a);
-		stmt.setInt(2,conto_da);
-		stmt.setBigDecimal(3,importo);
-		stmt.setString(4,causale);
-		stmt.setString(5,data);
-		stmt.setString(3,username);	
+	public void creaTransazione(Transazione t) throws SQLException{
+		PreparedStatement	stmt = conn.prepareStatement("INSERT INTO transazione(conto_a,conto_da,importo,causale,data) VALUES (?,?,?,?,?);");	
+		stmt.setInt(1,t.getContoA());
+		stmt.setInt(2,t.getContoDa());
+		stmt.setBigDecimal(3,t.getImporto());
+		stmt.setString(4,t.getCausale());
+		stmt.setString(5,t.getData());
 		
 		stmt.executeUpdate();
 return;
@@ -38,11 +37,14 @@ return;
 
 	public List<Transazione> transazioniPerDate(String dataInizio,
 			String dataFine) throws SQLException {
-		PreparedStatement	stmt = conn.prepareStatement("SELECT * FROM transazione WHERE data>=? AND data<=?");	
+		PreparedStatement	stmt = conn.prepareStatement("SELECT t.*, c_da.nome AS conto_daNome, c_a.nome AS conto_aNome FROM transazione t JOIN conto c_da ON t.conto_da=c_da.id " +
+				" JOIN conto c_a ON t.conto_a=c_a.id WHERE data>=? AND data<=? AND c_da.username=?");	
 		
 		
 		stmt.setString(1, dataInizio);
 		stmt.setString(2, dataFine);
+		stmt.setString(3,username);
+
 
 		
 		ResultSet risultato=stmt.executeQuery();
@@ -52,7 +54,8 @@ return;
 		while (risultato.next()){
 			
 			String importo = risultato.getString("importo");
-			Transazione transazione = new Transazione(risultato.getInt("id"),risultato.getInt("conto_da"),risultato.getInt("conto_a"),new BigDecimal(importo),risultato.getString("causale"),risultato.getString("data"),risultato.getString("username"));
+			Transazione transazione = new Transazione(risultato.getInt("id"),risultato.getInt("conto_da"),
+					risultato.getString("conto_daNome"),risultato.getInt("conto_a"),risultato.getString("conto_aNome"),new BigDecimal(importo),risultato.getString("causale"),risultato.getString("data"));
 			transazioni.add(transazione);
 		}
 		return transazioni;

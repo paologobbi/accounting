@@ -7,33 +7,35 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form action="CreaTransazione" method="post">
 <label> Ciao <% out.print(session.getAttribute("username")); %></label> <br>
 <p></p>
+<%List<Conto> conti= (List<Conto>) request.getAttribute("conti"); 
+ %>
+
 <select name="conto_da"><br>
-<option> - Da conto - </option>
-	
-<% 	    
-	List<String> conti = (List<String>) request.getAttribute("nomiConti");
-	 for (int i=1; i<=conti.size();i++){
-		 
-	  
-		out.print("<option value=\""+ i+"\">"+  conti.get(i) +"</option>\n");
-	
-	  
-	  }
-	  %>
-	  <% String conto_da = request.getParameter("conto_da"); %>
-	
-	
-	
+	<option> - Da conto - </option> 
+
+<%
+ for (Conto conto:conti){
+	%>
+	<option value="<%out.print(conto.getId()); %>"><%out.print(conto.toString()); %></option>
+
+	<%
+}
+%>
 </select>
 <select name="conto_a"><br>
 	<option> - A conto - </option> 
-	<option value="1">paolo</option>
-	<option value="2">2</option>
-	<option value="3">3</option>
-	<option value=3>4</option>
-	<option value="4">5</option>
+
+<%
+ for (Conto conto:conti){
+	%>
+	<option value="<%out.print(conto.getId()); %>"><%out.print(conto.toString()); %></option>
+
+	<%
+}
+%>
 </select>
 <p></p>
 <p></p>
@@ -62,7 +64,7 @@
 		out.print("<option value=\""+ i+"\">"+i+"</option>\n");
 	}%>
 	
-	<% String GiornoTransazioni = request.getParameter("GiornoTransazione"); %>
+	
 </select>
 
 
@@ -84,18 +86,11 @@
 
 <select name="AnnoTransazione">
 	<option> - Anno - </option>
-	<option value="2011">2011</option>
-	<option value="2010">2010</option>
-	<option value="2009">2009</option>
-	<option value="2008">2008</option>
-	<option value="2007">2007</option>
-	<option value="2006">2006</option>
-	<option value="2005">2005</option>
-	<option value="2004">2004</option>
-	<option value="2003">2003</option>
-	<option value="2002">2002</option>
-	<option value="2001">2001</option>
-	<option value="2000">2000</option>
+	<% 
+	for (int i=2011; i>=2000;i--){
+		out.print("<option value=\""+ i+"\">"+i+"</option>\n");
+	}%>
+	
 	</select>
 	
  <p></p>
@@ -104,6 +99,6 @@
 		<input type="submit" value="Continua" />
 		<input type="reset" value="Reset" />
 		<input type="button" value="Back" onClick="history.go(-1);return true;">
-
+</form>
 </body>
 </html>

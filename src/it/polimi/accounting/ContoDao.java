@@ -30,11 +30,18 @@ public class ContoDao {
 		
 	}
 
-	public ContoAttivo trovaConto(int id) throws SQLException{
-		PreparedStatement stmt = conn.prepareStatement("Select * FROM conto WHERE id=?");
+	public Conto trovaConto(int id) throws SQLException{
+		PreparedStatement stmt = conn.prepareStatement("Select * FROM conto WHERE id=? AND username=?");
 		stmt.setInt(1, id);
+		stmt.setString(2, username);
+
 	    ResultSet risultato=stmt.executeQuery();
-		return null ;
+	    risultato.next();
+		String saldo = risultato.getString("saldo");
+
+		Conto conto=creaConto(risultato.getInt("id"),risultato.getString("nome"),new BigDecimal(saldo),risultato.getString("tipo"));
+
+		return conto  ;
 
 		
 	}
@@ -44,11 +51,21 @@ public class ContoDao {
 			ContoAttivo conto= new ContoAttivo(id,nome,saldo);
 			return conto;
 		}
-		return null;
+		if(tipo.equals("entrate")){
+			ContoEntrate conto= new ContoEntrate(id,nome,saldo);
+			return conto;
+		}
+		if(tipo.equals("uscite")){
+			ContoUscite conto= new ContoUscite(id,nome,saldo);
+			return conto;
+		}
+		
+		
+		throw new RuntimeException("Il tipo del conto non è gestibile");
 	}
 	
 	public List<Conto> trovaConti() throws SQLException{
-		PreparedStatement	stmt = conn.prepareStatement("SELECT * FROM conto WHERE username=?");	
+		PreparedStatement	stmt = conn.prepareStatement("SELECT * FROM conto WHERE username=? ORDER BY tipo,nome ASC");	
 		stmt.setString(1, username);
 		ResultSet risultato=stmt.executeQuery();
 		List<Conto> conti = new ArrayList<Conto>();

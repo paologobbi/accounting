@@ -8,6 +8,10 @@ public class ContoEntrate extends Conto{
 	public ContoEntrate(Integer id, String nome, BigDecimal saldo) {
 		super(id, nome, saldo);
 	}
+	
+	public String toString(){
+		return "Entrate-"+this.getNome();
+	}
 
 	
 
