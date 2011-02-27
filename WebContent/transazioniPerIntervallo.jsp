@@ -4,13 +4,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="stile.css">
+
 <title>TransazioniDate</title>
 </head>
 <body>
 <form action="TransazioniDate" method="get">
-<label> Ciao <% out.print(session.getAttribute("username")); %></label> <br>
-<p></p>
-<label> Data inizio transazioni</label> <br>
+<legend>Tipo conto da creare</legend>
+
+
+
+
+<label> Data inizio transazioni</label> 
 
 	<select name="GiornoInizioTransazioni">
 	<option> - Giorno - </option>
@@ -57,7 +62,7 @@
 	
  <p></p>
 
-<label> Data fine transazioni</label> <br>
+<label> Data fine transazioni</label> 
 
 	<select name="GiornoFineTransazioni">
 	<option> - Giorno - </option>

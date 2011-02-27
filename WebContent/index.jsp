@@ -4,19 +4,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="StyleSheet" href="style.css" type="text/css" media="screen" /> 
 
 <title>Login</title>
 </head>
+<link rel="stylesheet" type="text/css" href="stile.css">
+
 <body>
+<p></p>
 
 <% 
   if (request.getAttribute("messaggio")!=null){
 	  out.print (request.getAttribute("messaggio"));
 	  }%>
+  <p></p>
   
 <form action="login" method="post"> 
-Login
+ <fieldset>
+<legend>LOGIN</legend>
+
+
 <label>Nome utente <input type="text" name="username" value="<%
 	String username = request.getParameter("username");
 	if (username!=null) {

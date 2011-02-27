@@ -1,0 +1,68 @@
+
+ul.navbar {
+  list-style-type: none;
+  padding: 10px;
+  margin: 0;
+  position: absolute;
+  top: 3em;
+  left: 2em;
+  width: 15em }
+
+body {
+	
+	background-color: #DBE8F9;
+	font: 20px "Lucida Grande", "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: #5A698B;
+
+	
+  padding-left: 3em;
+  padding-top:3em;
+   }
+  
+  ul.navbar li {
+    background: white;
+    margin: 0.8em 0;
+    padding: 0.5em;
+    border-right: 1em solid black }
+  ul.navbar a {
+    text-decoration: none }
+  a:link {
+    color: blue }
+  a:visited {
+    color: purple }
+  
+ address {
+    margin-top: 1em;
+    padding-top: 1em;
+    border-top: thin dotted }
+   
+
+fieldset { border:1px solid green }
+
+
+
+A:hover {font-size:24; font-weight:bold; color: red;}
+  
+
+label {
+	margin:2px;
+display:block}
+p { margin-top:10px;
+margin-down:20px;
+	}
+legend  {
+	width:25em;
+	text-align:left;
+
+ color:#00f;
+ background-color:#ddd;
+}
+
+
+form {
+	
+width: 400px;
+margin:0px;
+padding:0px;
+}
+

@@ -4,16 +4,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="StyleSheet" href="style.css" type="text/css" media="screen" /> 
+<link rel="stylesheet" type="text/css" href="stile.css">
 
 <title>registrazione</title>
 </head>
+
+
 <body>
-<legend>Form per la registrazione nuovo utente</legend><br>
-   
-   <p></p>
 
 	<form action="registrazione" method="post">
+	<legend>REGISTRAZIONE</legend>
+	
 		<label>Nome <input type="text" name="nome" value="<%
 		String nome = request.getParameter("nome");
 		if (nome!=null){

@@ -6,6 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+<link rel="stylesheet" type="text/css" href="stile.css">
+
 <body>
 <table border=2, cell> 
 	<tr bgcolor=#00c196>
@@ -35,5 +37,8 @@ for (Transazione transazione : transazioni) {
 }
 %>
 </TABLE>
+<p></p>
+		
+		<input type="button" value="Back" onClick="history.go(-1);return true;">
 </body>
 </html>

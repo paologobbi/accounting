@@ -4,11 +4,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="stile.css">
+
 <title>Insert title here</title>
 </head>
 <body>
 <form action="CreaTransazione" method="post">
-<label> Ciao <% out.print(session.getAttribute("username")); %></label> <br>
+<legend>FAI UNA TRANSAZIONE</legend>
+
+
 <p></p>
 <%List<Conto> conti= (List<Conto>) request.getAttribute("conti"); 
  %>
@@ -37,19 +41,15 @@
 }
 %>
 </select>
-<p></p>
-<p></p>
-<p></p>
  <p></p>
- <p></p>
-		<label>Importo   <input type="text" name="importo" value="<%
+
+
+<label>Importo   <input type="text" name="importo" value="<%
 			String importo = request.getParameter("importo");%>"/>
-		 </label>
-	<p></p>
- <p></p>
-  <p></p>
- <p></p>
-		<label>Causale   <input type="text" name="causale" value="<%
+<p></p>
+			
+</label>
+<label>Causale   <input type="text" name="causale" value="<%
 			String causale = request.getParameter("causale");%>"/>
 		 </label>
 	<p></p>

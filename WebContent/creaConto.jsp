@@ -6,9 +6,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>creaConto</title>
 </head>
+<link rel="stylesheet" type="text/css" href="stile.css">
+
 <body>
-<legend>Tipo conto da creare</legend><br>
+
 <form action="CreaConto" method="post">
+<legend>Tipo conto da creare</legend>
 
 	<input type="radio" name="tipoConto"  value="Attivo" /> Attivo <br>
 	<input type="radio" name="tipoConto" value="Passivo" /> Passivo<br>
